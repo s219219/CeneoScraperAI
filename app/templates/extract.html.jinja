@@ -6,13 +6,14 @@
     {% if form.productId.errors %}
         <div class="alert alert-danger" role="alert">
             {% for error in form.productId.errors  %}
-                <p>{{ error }}</p>
+                <p><i class="bi bi-exclamation-triangle-fill"></i>&nbsp;&nbsp;&nbsp;{{ error }}</p>
             {% endfor %}
         </div>
     {% endif %}
     <form method="POST" action="{{ url_for('extract') }}">
         {{ form.csrf_token }}
-        {{ form.productId.label }} {{ form.productId(size=20) }}
-        {{ form.submit(class_="btn btn-info")}}
+        <br>
+        {{ form.productId(size=20, placeholder="Enter product Id") }}
+        {{ form.submit(class_="btn btn-primary", style="margin-left: 10px; margin-top:-2px")}}
     </form>
 {% endblock middle %}

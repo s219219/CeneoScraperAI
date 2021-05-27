@@ -1,6 +1,6 @@
-from wtforms import Form, StringField, SubmitField, validators
-
-class ProductForm(Form):
+from wtforms import StringField, SubmitField, validators
+from flask_wtf import FlaskForm
+class ProductForm(FlaskForm):
     productId = StringField(
         'Enter product Id',
         [

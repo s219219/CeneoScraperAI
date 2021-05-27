@@ -14,6 +14,7 @@
             width: 100%;
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
 
@@ -25,10 +26,10 @@
         </a>
 
         <ul class="nav nav-pills">
-          <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Extract</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Author</a></li>
+          <li class="nav-item"><a href="{{ url_for('index') }}" class="nav-link active" aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="{{ url_for('extract') }}" class="nav-link">Extract</a></li>
+          <li class="nav-item"><a href="{{ url_for('products') }}" class="nav-link">Products</a></li>
+          <li class="nav-item"><a href="{{ url_for('author') }}" class="nav-link">Author</a></li>
         </ul>
 
       </header>

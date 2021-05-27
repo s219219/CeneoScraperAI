@@ -25,24 +25,24 @@ class Product:
             pageDOM = BeautifulSoup(respons.text, 'html.parser')
             opinions = pageDOM.select("div.js_product-review")
             for opinion in opinions:
-                self.opinions.append(Opinion().extractOpinion(opinion))
+                self.opinions.append(Opinion().extractOpinion(opinion).transformOpinion())
             try:
                 url = self.url_pre + extractElement(pageDOM, 'a.pagination__next', "href") 
             except TypeError:
                 url = None
 
     def exportProduct(self):
-        with open("opinions/{}.json".format(self.productId), "w", encoding="UTF-8") as jf:
-            json.dump(dict(self), jf, indent=4, ensure_ascii=False)
+        with open("app/opinions/{}.json".format(self.productId), "w", encoding="UTF-8") as jf:
+            json.dump(self.toDict(), jf, indent=4, ensure_ascii=False)
 
     def __str__(self):
         return '''productId: {}<br>
         name: {}<br>'''.format(self.productId, self.name)+"<br>".join(str(opinion) for opinion in self.opinions)
 
-    def __dict__(self):
+    def toDict(self):
         return {
             "productId": self.productId,
             "name": self.name,
-            "opinions": [dict(opinion) for opinion in self.opinions]
+            "opinions": [opinion.toDict() for opinion in self.opinions]
         }
         
