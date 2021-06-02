@@ -1,7 +1,33 @@
 {% extends "layout.html.jinja" %}
 
 {% block middle %}
-    <center style="margin: 30px 0px;">
-        <h2>{{productId}}<h1>
-    </center>
+
+    {#<h2> {{product}} </h2> #}
+    {#<p> {{product}} <p>#}
+    {% for table in tables %}
+            {{ table|safe }}
+    {% endfor %}
+
+    <ul style="margin: 50px 0px;">
+        <li>
+            <a href="#" class="nav-link active" aria-current="page">CSV Download</a>
+        </li>
+        <li>
+            <a href="#" class="nav-link active" aria-current="page">XLS Download</a>
+        </li>
+        <li>
+            <a href="#" class="nav-link active" aria-current="page">Json Download</a>
+        </li>
+        <li>
+            <a href="#" class="nav-link active" aria-current="page">Watch Table Charts</a>
+        </li>
+    <ul>
+
 {% endblock middle %}
+{% block scripts %}
+      <script>
+        $(document).ready( function () {
+            $('#opinions').DataTable();
+        } );
+      </script>
+{% endblock scripts %}

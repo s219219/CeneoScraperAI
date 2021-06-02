@@ -28,9 +28,13 @@ def extract():
             form.productId.errors.append("For given productId there is no product")
     return render_template('extract.html.jinja', form=form)
 
+
 @app.route('/product/<productId>')
 def product(productId):
-    return render_template('product.html.jinja', productId=productId)
+    product = Product(productId)
+    opinions = product.importProduct().opinionsToDataFrame()
+    return render_template('product.html.jinja', tables=[opinions.to_html(classes='table table-striped table-sm table-responsive', table_id="opinions")])
+
 
 @app.route('/products')
 def products():

@@ -4,6 +4,7 @@ from app.models.opinion import Opinion
 import requests
 import json
 from bs4 import BeautifulSoup
+import pandas as pd
 
 class Product:
 
@@ -31,6 +32,15 @@ class Product:
             except TypeError:
                 url = None
 
+    def importProduct(self):
+        with open("app/opinions/{}.json".format(self.productId), "r", encoding="UTF-8") as jf:
+            product = json.load(jf)
+            self.name = product['name']
+            opinions = product['opinions']
+            for opinion in opinions:
+                self.opinions.append(Opinion(**opinion))
+            return self
+
     def exportProduct(self):
         with open("app/opinions/{}.json".format(self.productId), "w", encoding="UTF-8") as jf:
             json.dump(self.toDict(), jf, indent=4, ensure_ascii=False)
@@ -45,4 +55,7 @@ class Product:
             "name": self.name,
             "opinions": [opinion.toDict() for opinion in self.opinions]
         }
-        
+
+    def opinionsToDataFrame(self):
+        opinions = pd.DataFrame.from_records([opinion.toDict() for opinion in self.opinions])
+        return opinions
