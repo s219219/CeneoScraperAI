@@ -1,19 +1,23 @@
 {% extends "layout.html.jinja" %}
 
 {% block middle %}
-    <h2> Opinions extraction: </h2>
-    <h3>{{ test }}</h3>
-    {% if form.productId.errors %}
-        <div class="alert alert-danger" role="alert">
-            {% for error in form.productId.errors  %}
-                <p><i class="bi bi-exclamation-triangle-fill"></i>&nbsp;&nbsp;&nbsp;{{ error }}</p>
-            {% endfor %}
+    <center>
+        <div class="opinions">
+            <h2> Opinions extraction: </h2>
+            <h3>{{ test }}</h3>
+            {% if form.productId.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {% for error in form.productId.errors  %}
+                        <p><i class="bi bi-exclamation-triangle-fill"></i>&nbsp;&nbsp;&nbsp;{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <form method="POST" action="{{ url_for('extract') }}">
+                {{ form.csrf_token }}
+                <br>
+                {{ form.productId(size=20, placeholder="Enter product Id") }}
+                {{ form.submit(class_="btn btn-primary", style="margin-left: 10px; margin-top:-2px")}}
+            </form>
         </div>
-    {% endif %}
-    <form method="POST" action="{{ url_for('extract') }}">
-        {{ form.csrf_token }}
-        <br>
-        {{ form.productId(size=20, placeholder="Enter product Id") }}
-        {{ form.submit(class_="btn btn-primary", style="margin-left: 10px; margin-top:-2px")}}
-    </form>
+    </center>
 {% endblock middle %}

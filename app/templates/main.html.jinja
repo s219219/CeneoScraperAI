@@ -1,7 +1,77 @@
 {% extends "layout.html.jinja" %}
+{% block middle %} 
 
-{% block middle %}
-    <center style="">
-        <h2>This is main page<h1>
-    </center>
+        <div class="desc">
+            <h3>Purpose of the application</h3>
+            <hr>
+            <p>
+            The purpose of the application is to extract opinions about products from the Ceneo.pl website.<br>
+            For product, the code of which will be given as a parameter, its name and all available opinions<br>
+            about it should be extracted.
+            </p>
+        </div>
+
+        <div class="desc">
+            <h3>Description of the application's operation</h3>
+            <hr>
+            <p><b>To extract reviews from a product, you need to:</b></p>
+            <ol>
+                <li>1. Go to Ceneo and find the product that interests you.</li>
+                <li>2. In the site header, click on the <b class="clr">"Extact"</b> button.</li>
+                <li>3. In the field, enter the ID of your product and click on the button <b class="clr">"Extact"</b>.</li>
+                <li>4. Then you will be taken to a page with reviews for the product you entered.</li>
+            </ol>
+        </div>
+
+        <style>
+            li{
+                display:block !important;
+            }
+        </style>
+
+        <div class="desc">
+            <h3>Libraries used</h3>
+            <hr>
+            <h5>Python Libraries:</h5>
+            <ul>
+                <li>autopep8 == <b class="clr">1.5.7</b></li>
+                <li>beautifulsoup4 == <b class="clr">4.9.3</b></li>
+                <li>certifi == <b class="clr">2020.12.5</b></li>
+                <li>chardet == <b class="clr">4.0.0</b></li>
+                <li>click == <b class="clr">8.0.1</b></li>
+                <li>Flask == <b class="clr">2.0.1</b></li>
+                <li>Flask-WTF == <b class="clr">0.15.1</b></li>
+                <li>idna == <b class="clr">2.10</b></li>
+                <li>itsdangerous == <b class="clr">2.0.1</b></li>
+                <li>Jinja2 == <b class="clr">3.0.1</b></li>
+                <li>MarkupSafe == <b class="clr">2.0.1</b></li>
+                <li>pycodestyle == <b class="clr">2.7.0</b></li>
+                <li>requests == <b class="clr">2.25.1</b></li>
+                <li>soupsieve == <b class="clr">2.2.1</b></li>
+                <li>toml == <b class="clr">0.10.2</b></li>
+                <li>urllib3 == <b class="clr">1.26.5</b></li>
+                <li>Werkzeug == <b class="clr">2.0.1</b></li>
+                <li>wtf == <b class="clr">0.1</b></li>
+                <li>WTForms == <b class="clr">2.3.3</b></li>
+            </ul>
+            <br><h5>JS & CSS Libraries:</h5>
+            <ul>
+                <li>JQuery == <b class="clr">Latest</b></li>
+                <li>Bootstap == <b class="clr">5.0.1</b></li>
+                <li>Datatables == <b class="clr">1.10.24</b></li>
+            </ul>
+        </div>
+
+        <div class="desc">
+            <h3>Applied approaches</h3>
+            <hr>
+            <p>
+            The application is implemented in stages, from a single file to an extended structure of files<br>
+            and directories, based on the chosen structure and best practices in software development. The<br>
+            program uses an object-oriented approach. And also a simple text interface is used, which allows<br>
+            the user to enter values, which will later become the basis for the development of the<br>
+            application's web interface.
+            </p>
+        </div>
+
 {% endblock middle %}
